@@ -1,0 +1,20 @@
+<section data-ng-controller="ElectionsController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Elections</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="election in elections" data-ng-href="#!/elections/{{election._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Posted on
+				<span data-ng-bind="election.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="election.user.displayName"></span>
+			</small>
+			<h4 class="list-group-item-heading" data-ng-bind="election.name"></h4>
+            {{election.election_date}}
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!elections.$resolved || elections.length">
+    	No Elections yet, why don't you <a href="/#!/elections/create">create one</a>?
+    </div>
+</section>
