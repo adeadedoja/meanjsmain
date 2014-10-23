@@ -1,0 +1,50 @@
+
+
+
+<section data-ng-controller="VotingsController">
+    <div class="page-header">
+        <h1>New Voting</h1>
+    </div>
+    <div class="col-md-12">
+        <form class="form-horizontal" data-ng-submit="create()" novalidate>
+            <fieldset>
+
+                <div class="form-group">
+                    <label class="control-label" for="name">Election</label>
+                    <div class="controls">
+                          <select data-ng-model="election" data-ng-options="election.name for election in elections track by election.name">
+                              <option value="">-- choose election --</option>
+                            </select>
+                            {{election.name}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="name">Contestant</label>
+                    <div class="controls">
+                       
+  <table>
+    <tr ng-repeat="ballot in ballots | filter:election.name">
+      
+
+      <td><input type="radio" ng-model="$parent.choice" ng-value="ballot.contestant" name="choice"> {{ballot.contestant}}</td>
+    </tr>
+  </table>
+
+
+                    </div>
+                </div>
+                
+    Your choice: {{choice}}
+                <div class="form-group">
+                   <input type="hidden" data-ng-model="electiona" id="electiona" ng-value="electiona=election.name">
+                    <input type="hidden" data-ng-model="voter" id="voter" ng-value="voter=authentication.user.displayName">
+                
+                    <input type="submit" class="btn btn-default" value="Vote Now">
+                </div>
+				<div data-ng-show="error" class="text-danger">
+					<strong data-ng-bind="error"></strong>
+				</div>
+            </fieldset>
+        </form>
+    </div>
+</section>

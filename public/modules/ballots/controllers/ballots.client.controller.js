@@ -1,10 +1,11 @@
 'use strict';
 
 // Ballots controller
-angular.module('ballots').controller('BallotsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Ballots',
-	function($scope, $stateParams, $location, Authentication, Ballots ) {
+angular.module('ballots').controller('BallotsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Ballots', 'Elections', 'Candidates',
+	function($scope, $stateParams, $location, Authentication, Ballots, Elections, Candidates ) {
 		$scope.authentication = Authentication;
-
+		$scope.elections = Elections.query();
+		$scope.contestants = Candidates.query();
 		// Create new Ballot
 		$scope.create = function() {
 			// Create new Ballot object

@@ -1,10 +1,25 @@
 'use strict';
 
 // Votes controller
-angular.module('votes').controller('VotesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Votes',
-	function($scope, $stateParams, $location, Authentication, Votes ) {
+angular.module('votes').controller('VotesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Votes', 'Ballots', 'Elections',
+	function($scope, $stateParams, $location, Authentication, Votes, Elections, Ballots ) {
 		$scope.authentication = Authentication;
-
+		$scope.elections = Elections.query();
+		$scope.ballots = Ballots.query();
+		$scope.groupaOptions = [{electionname:'presidential'}, {electionname:'B'}];
+  
+  $scope.persons =  [{
+    'name' : 'Steve',
+    'group' : 'presidential'
+  },
+  {
+    'name' : 'Bob',
+    'group' : 'B'
+  },
+  {
+    'name' : 'Peter',
+    'group' : 'B'
+  }];
 		// Create new Vote
 		$scope.create = function() {
 			// Create new Vote object

@@ -6,17 +6,46 @@
         <form class="form-horizontal" data-ng-submit="create()" novalidate>
             <fieldset>
                 <div class="form-group">
-                    <label class="control-label" for="election">Election</label>
+                    <label class="control-label" for="election">Choice</label>
                     <div class="controls">
-                        <input type="text" data-ng-model="election" id="election" class="form-control" required>
+                        <select data-ng-model="choice" class="form-control" ng-options="election.name as election.name for election in elections track by election.name">
+                        </select>
+                       
                     </div>
                 </div>
+                <span data-ng-bind="election"></span> 
                 <div class="form-group">
-                    <label class="control-label" for="choice">Choice{{authentication.user.displayName}}</label>
+                    <label class="control-label" for="choice">Election</label>
                     <div class="controls">
-                        <input type="text" data-ng-model="choice" id="choice" class="form-control" required>
+                        <select data-ng-model="election" class="form-control" ng-options="contestant.name as contestant.name for contestant in contestants track by contestant.name | filter:{name: 'akdj'}">
+                        </select>
                     </div>
                 </div>
+
+    <select ng-model="showGroup" ng-options="c.electionname for c in groupaOptions">
+      <option value="">-- choose color --</option>
+    </select>
+
+z
+  <table>
+    <tr ng-repeat="person in persons | filter:showGroup.electionname">
+      <td>{{person.name}}</td>
+    </tr>
+  </table>    
+
+
+
+
+
+  <select ng-model="election" ng-options="contestant.name for contestant in contestants">
+      <option value="">-- choose color --</option>
+    </select>
+{{election.name}}
+  <table>
+    <tr ng-repeat="choice in elections">
+      <td>{{choice.name}}</td>
+    </tr>
+  </table>
                 <input type="hidden" data-ng-model="voter" id="voter" ng-value="voter=authentication.user.displayName">
                 <div class="form-group">
                     <input type="submit" class="btn btn-default">

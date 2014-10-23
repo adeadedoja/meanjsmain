@@ -7,12 +7,13 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 /**
- * Vote Schema
+ * Voting Schema
  */
-var VoteSchema = new Schema({
+var VotingSchema = new Schema({
 	election: {
 		type: String,
 		default: '',
+		required: '',
 		trim: true
 	},
 	voter: {
@@ -37,4 +38,4 @@ var VoteSchema = new Schema({
 	}
 });
 
-mongoose.model('Vote', VoteSchema);
+mongoose.model('Voting', VotingSchema);

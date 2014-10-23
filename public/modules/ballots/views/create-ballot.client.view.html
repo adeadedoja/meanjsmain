@@ -8,18 +8,18 @@
                 <div class="form-group">
                     <label class="control-label" for="election">Election</label>
                     <div class="controls">
-                        <section data-ng-controller="PartiesController" data-ng-init="find()">
-                            <select data-ng-model="election" id="election" class="form-control">
-                                <option data-ng-repeat="party in parties" value="{{party.name}}">{{party.name}}</option>
+                       <select data-ng-model="election" class="form-control" ng-options="election.name as election.name for election in elections track by election.name">
+                             
                             </select>
-                        </section>
                       
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="contestant">Contestant</label>
                     <div class="controls">
-                        <input type="text" data-ng-model="contestant" id="contestant" class="form-control" required>
+                       <select data-ng-model="contestant" class="form-control" ng-options="contestant.name as contestant.name for contestant in contestants track by contestant.name">
+                             
+                            </select>
                     </div>
                 </div>
                 <div class="form-group">
